@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>1.0.0</Version>
+    <Authors>Plexisms</Authors>
+    <Company>Plexisms</Company>
+    <Description>Official C# .NET SDK for Plexisms SMS API</Description>
+    <PackageId>Plexisms.Net</PackageId>
+    <PackageTags>sms;plexisms;otp;messaging</PackageTags>
+    <RepositoryUrl>https://github.com/plexisms/sdk-plexisms-csharp</RepositoryUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/plexisms/sdk-plexisms-csharp</PackageProjectUrl>
+    <PackageIcon>https://raw.githubusercontent.com/plexisms/plexisms-dotnet/main/icon.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+</Project>

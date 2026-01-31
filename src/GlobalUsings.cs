@@ -1,0 +1,9 @@
+global using System;
+global using System.Net.Http;
+global using System.Net.Http.Headers;
+global using System.Threading.Tasks;
+global using Newtonsoft.Json;
+global using Plexisms.Exceptions;
+global using Plexisms.Models.Requests;
+global using Plexisms.Models.Responses;
+global using Plexisms.Resources;
