@@ -2,16 +2,35 @@ using System.Text;
 
 namespace Plexisms.Resources;
 
+/// <summary>
+/// Abstract base class for all API resources.
+/// Handles HTTP request creation, execution, and error handling.
+/// </summary>
 public abstract class BaseResource
 {
+    /// <summary>
+    /// The HTTP client used for making requests.
+    /// </summary>
     protected readonly HttpClient HttpClient;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="BaseResource"/> class.
+    /// </summary>
+    /// <param name="httpClient">The HTTP client.</param>
     protected BaseResource(HttpClient httpClient)
     {
         HttpClient = httpClient;
     }
 
-    protected async Task<T> SendRequestAsync<T>(HttpMethod method, string path, object body = null)
+    /// <summary>
+    /// Sends an asynchronous HTTP request to the API.
+    /// </summary>
+    /// <typeparam name="T">The type of the expected response object.</typeparam>
+    /// <param name="method">The HTTP method (GET, POST, etc.).</param>
+    /// <param name="path">The API endpoint path.</param>
+    /// <param name="body">The request body (optional).</param>
+    /// <returns>The deserialized response object.</returns>
+    protected async Task<T> SendRequestAsync<T>(HttpMethod method, string path, object? body = null)
     {
         var request = new HttpRequestMessage(method, path);
 

@@ -1,15 +1,34 @@
 namespace Plexisms;
 
+/// <summary>
+/// The main client for interacting with the Plexisms API.
+/// </summary>
 public class PlexismsClient
 {
     private const string DefaultBaseUrl = "https://server.plexisms.com";
     private readonly HttpClient _httpClient;
 
+    /// <summary>
+    /// Resources for sending and managing SMS messages.
+    /// </summary>
     public Messages Messages { get; }
+
+    /// <summary>
+    /// Resources for One-Time Password (OTP) verification.
+    /// </summary>
     public Otp Otp { get; }
+
+    /// <summary>
+    /// Resources for account management (e.g., balance check).
+    /// </summary>
     public Account Account { get; }
 
-    public PlexismsClient(string apiKey, string baseUrl = null)
+    /// <summary>
+    /// Initializes a new instance of the <see cref="PlexismsClient"/> class.
+    /// </summary>
+    /// <param name="apiKey">Your Plexisms API Key. If null, attempts to load from defining environment variable PLEXISMS_API_KEY.</param>
+    /// <param name="baseUrl">The base URL of the API. Defaults to https://server.plexisms.com.</param>
+    public PlexismsClient(string? apiKey, string? baseUrl = null)
     {
         if (string.IsNullOrWhiteSpace(apiKey))
         {

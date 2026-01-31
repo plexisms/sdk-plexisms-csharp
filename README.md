@@ -58,3 +58,7 @@ if (result.Valid)
 ## License
 
 MIT
+
+## Publishing
+
+See [PUBLISHING.md](PUBLISHING.md) for instructions on how to publish this package to NuGet.org.

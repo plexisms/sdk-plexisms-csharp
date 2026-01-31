@@ -2,14 +2,26 @@ using System.Collections.Generic;
 
 namespace Plexisms.Resources;
 
+/// <summary>
+/// Resource for sending and managing SMS messages.
+/// </summary>
 public class Messages : BaseResource
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Messages"/> class.
+    /// </summary>
+    /// <param name="httpClient">The HTTP client.</param>
     public Messages(HttpClient httpClient) : base(httpClient) { }
 
     /// <summary>
-    /// Send a single SMS
+    /// Sends a single SMS message.
     /// </summary>
-    public async Task<SmsResponse> SendAsync(string to, string message, string senderId = null, string smsType = "transactional")
+    /// <param name="to">The recipient's phone number.</param>
+    /// <param name="message">The content of the SMS message.</param>
+    /// <param name="senderId">The sender ID (optional).</param>
+    /// <param name="smsType">The type of SMS (default: "transactional").</param>
+    /// <returns>A <see cref="SmsResponse"/> indicating the result.</returns>
+    public async Task<SmsResponse> SendAsync(string to, string message, string? senderId = null, string smsType = "transactional")
     {
         var request = new SendSmsRequest
         {
@@ -23,9 +35,14 @@ public class Messages : BaseResource
     }
 
     /// <summary>
-    /// Send bulk SMS
+    /// Sends bulk SMS messages to multiple recipients.
     /// </summary>
-    public async Task<BulkSmsResponse> SendBulkAsync(List<string> phoneNumbers, string message, string senderId = null, string smsType = "transactional")
+    /// <param name="phoneNumbers">A list of recipient phone numbers.</param>
+    /// <param name="message">The content of the SMS message.</param>
+    /// <param name="senderId">The sender ID (optional).</param>
+    /// <param name="smsType">The type of SMS (default: "transactional").</param>
+    /// <returns>A <see cref="BulkSmsResponse"/> indicating the result.</returns>
+    public async Task<BulkSmsResponse> SendBulkAsync(List<string> phoneNumbers, string message, string? senderId = null, string smsType = "transactional")
     {
         var request = new SendBulkSmsRequest
         {
@@ -39,8 +56,10 @@ public class Messages : BaseResource
     }
 
     /// <summary>
-    /// Get SMS status
+    /// Retrieves the status of a specific message.
     /// </summary>
+    /// <param name="messageId">The unique ID of the message.</param>
+    /// <returns>A <see cref="MessageStatusResponse"/> containing the status.</returns>
     public async Task<MessageStatusResponse> GetStatusAsync(string messageId)
     {
         return await SendRequestAsync<MessageStatusResponse>(HttpMethod.Get, $"/api/sms/{messageId}/status/");
