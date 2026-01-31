@@ -51,7 +51,7 @@ public abstract class BaseResource
             HandleError(response, responseBody);
         }
 
-        return JsonConvert.DeserializeObject<T>(responseBody);
+        return JsonConvert.DeserializeObject<T>(responseBody)!;
     }
 
     private void HandleError(HttpResponseMessage response, string responseBody)
@@ -60,7 +60,7 @@ public abstract class BaseResource
         try
         {
             // Try to parse error message from JSON
-            dynamic errorObj = JsonConvert.DeserializeObject(responseBody);
+            dynamic errorObj = JsonConvert.DeserializeObject(responseBody)!;
             if (errorObj != null)
             {
                 message = errorObj.error ?? errorObj.detail ?? errorObj.message ?? message;
